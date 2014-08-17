@@ -1,0 +1,224 @@
+\usepackage{setspace}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{tocloft}
+\usepackage{color}
+\usepackage{scrextend}
+\usepackage{titletoc}
+\usepackage{sectsty}
+\usepackage{fancyhdr}
+\usepackage[utf8]{inputenc}
+\usepackage[hmargin=1.5in, vmargin=1.5in]{geometry}
+
+% This is the styles files, you don't need to edit this whatsoever unless you
+% want to change the format of the report. As it is now, it conforms exactly
+% to the Spring 2013 PD2 Report Writing Guidelines
+
+
+\sectionfont{\normalsize}
+\subsectionfont{\normalsize}
+\subsubsectionfont{\normalsize}
+
+\newcommand{\faculty}{Faculty of Mathematics}
+\newcommand{\UwLocation}{Waterloo, Ontario}
+\newcommand{\memorandumpone}[5] {
+As we agreed, I have prepared the enclosed report, “#1” for my #2 work report and for #3. This report, the #4 of four work reports that the Co-operative Education Program requires that I successfully complete as part of my #5 Co-op degree requirements, has not received academic credit.
+}
+\newcommand{\momerandumptwo} {
+The Faculty of Mathematics requests that you evaluate this report for command of topic and technical content/analysis. Following your assessment, the report, together with your evaluation, will be submitted to the Math Undergrad Office for evaluation on campus by qualified work report markers. The combined marks determine whether the report will receive credit and whether it will be considered for an award. \\ \\
+Thank you for your assistance in preparing this report.
+}
+
+\newlength\mylen
+\settowidth\mylen{Figure\ }
+\addtolength\cftfignumwidth{\mylen}
+\addtolength\cfttabnumwidth{\mylen}
+\renewcommand*{\cftfigfont}{Figure }
+\renewcommand*{\cfttabfont}{Table \hspace{0.075in}}
+
+\doublespacing
+\addtolength{\parskip}{\baselineskip}
+\setlength{\parindent}{0pt}
+\setlength{\cftsecnumwidth}{25pt}
+\setlength{\parskip}{1em}
+
+\newcommand{\waterlootitlepage}[4] {
+
+\titlecontents{section}
+[0pt]
+{}%
+{\contentsmargin{0pt}
+    \thecontentslabel\enspace%
+    }
+    {\contentsmargin{0pt}}
+    {\titlerule*[.5pc]{.}\contentspage}
+    []
+
+    \begin{singlespace}
+    \begin{titlepage}
+    \begin{center}
+    \textbf{\MakeUppercase{University of Waterloo}} \\
+    #1
+    \vfill
+    {
+    \textsc{\textbf{\MakeUppercase{#2}}}
+    }
+    \vfill
+    #3
+    \vfill
+    Prepared by \\
+    #4
+    \end{center}
+    \end{titlepage}
+    \end{singlespace}
+
+
+    }
+
+    \newcommand{\waterlooletterofsubmittal}[6] {
+    \begin{waterlooletter}
+    #1
+
+    To:     #2 \\
+    From:   #3 \\
+    Date:   \today \\
+    Re:     #4 \\
+    \rule{\textwidth}{2pt}
+
+    #5
+
+    #6
+    \end{waterlooletter}
+    }
+
+    \newenvironment{waterlooletter}{
+    \begin{singlespace}}{
+    \end{singlespace}
+    \thispagestyle{empty}
+    \newpage
+    }
+
+    \makeatletter
+    \renewcommand\@biblabel[1]{#1} % No brackets for the references
+    \renewenvironment{thebibliography}[1]
+         {\section*{\refname}%
+          \@mkboth{\MakeUppercase\refname}{\MakeUppercase\refname}%
+          \list{\@biblabel{\@arabic\c@enumiv}}%
+               {\settowidth\labelwidth{\@biblabel{#1}}%
+                \leftmargin\labelwidth
+                \advance\leftmargin20pt% change 20 pt according to your needs
+                \advance\leftmargin\labelsep
+                \setlength\itemindent{-20pt}% change using the inverse of the length used before
+                \@openbib@code
+                \usecounter{enumiv}%
+                \let\p@enumiv\@empty
+                \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+          \sloppy
+          \clubpenalty4000
+          \@clubpenalty \clubpenalty
+          \widowpenalty4000%
+          \sfcode`\.\@m}
+         {\def\@noitemerr
+           {\@latex@warning{Empty `thebibliography' environment}}%
+          \endlist}
+    \renewcommand\newblock{\hskip .11em\@plus.33em\@minus.07em}
+    \makeatother
+
+    \newcommand{\makereferences}[1]{
+    \newpage
+    \addcontentsline{toc}{section}{References}
+    \begin{thebibliography}{99\kern\bibindent}
+    #1
+    \end{thebibliography}
+    \newpage
+    }
+
+    \newcommand{\addanappendix}[2]{
+    \tocsection{#1}
+    #2
+    }
+
+    \makeatletter
+    \renewcommand\ext@table{lof}
+    \makeatother
+
+    \renewcommand\cftfigpresnum{Figure }
+    \renewcommand\cfttabpresnum{Table }
+
+    \newcommand{\mytableofcontents} {
+    \tableofcontents
+    \newpage
+    \begin{center}
+    \tocsection{List of Tables and Figures}
+    \end{center}
+    \listoffigures
+    \newpage
+    }
+
+    \newcommand{\mySection}[2] {
+    \section{#1}
+    #2
+    }
+
+    \newcommand{\mySubSection}[2] {
+    \begin{addmargin}[1.5em]{0em}
+    \subsection{#1}
+    #2
+    \end{addmargin}
+    }
+
+    \newcommand{\mySubSubSection}[2] {
+    \begin{addmargin}[1.5em]{0em}
+    \subsubsection{#1}
+    #2
+    \end{addmargin}
+    }
+
+    \newcommand{\myFigure}[3] {
+    \begin{figure}
+    \centering
+    \scalebox{#1}{\includegraphics{#2}}
+    \caption{#3}
+    \end{figure}
+    }
+
+    \newcommand{\myTable}[3] {
+    \begin{table}
+    \centering
+    \scalebox{#1}{\includegraphics{#2}}
+    \caption{#3}
+    \end{table}
+    }
+
+    \def\thesection{\arabic{section}.0 }
+    \def\thesubsection{\arabic{section}.\arabic{subsection}}
+
+    \renewcommand{\contentsname} {
+    \begin{center}
+    Table of Contents
+    \end{center}
+    }
+
+    \newcommand{\bulletpoints}[1]{
+    \begin{spaceditemize}
+    #1
+    \end{spaceditemize}
+    }
+
+    \renewcommand{\listfigurename}{}
+    \renewcommand{\cftsecleader}{\bfseries\cftdotfill{\cftdotsep}}
+    \renewcommand{\cftfigpresnum}{Figure }
+    \renewcommand{\cftfigaftersnum}{ --- }
+    \renewcommand{\cftfignumwidth}{65pt}
+    \newcommand{\tocsection}[1]{
+    \section*{#1}
+    \addcontentsline{toc}{section}{#1}
+    }
+
+    \newenvironment{spaceditemize}{
+    \begin{list}{$\bullet$}
+    {
+    \setlength{\parskip}{0pt}
+    }}
+    {\end{list}\bigskip
+    }

@@ -1,0 +1,189 @@
+\documentclass[12pt]{article}
+\usepackage{reportstyle}
+\usepackage{lipsum} % remove this
+
+% Your information
+%   Enter your report information here
+\newcommand{\mytitle}{Lorem Ipsum}
+\newcommand{\fullname}{William Jacob Willemsma}
+\newcommand{\myterm}{2B}
+\newcommand{\myprogram}{Computer Science}
+\newcommand{\studentid}{20400000}
+\newcommand{\companytitle}{AnyCompany Inc.}
+\newcommand{\companyaddress}{123 Main St}
+\newcommand{\companycity}{Waterloo, Ontario}
+\newcommand{\companypostalcode}{A1B 2C3}
+\newcommand{\supervisorname}{John Doe}
+\newcommand{\reportnumber}{second}
+
+% Title Page (ignore)
+%   Creates the title page based on your information above
+\newcommand{\createtitlepage} {
+  \pagenumbering{roman}
+  \waterlootitlepage
+    {\faculty}
+    {\mytitle}
+    {\companytitle \\ \companyaddress \\ \companycity, \ \companypostalcode}
+    {\fullname \\ \myterm \ \myprogram \\ ID \studentid \\ Report Completed On: \today}
+}
+
+% Letter of Submittal
+%   Write your letter of submittal below, the header, salutation,
+%   and signature (except the image) are done for you already
+\newcommand{\letterofsubmittal} {
+  \waterlooletterofsubmittal
+    {\textbf{\uppercase{MEMORANDUM}}}{\supervisorname}{\fullname}{\mytitle}
+    {
+
+    \memorandumpone{\mytitle}{\myterm}{\companytitle}{\reportnumber}{\myprogram}
+
+    \lipsum[1] % remove this line
+
+    \momerandumptwo
+
+    }
+    {
+    % Attach an image of your signature
+    % The first number is a scale factor
+    % (if you can't, just delete this and uncomment next line)
+     \scalebox{0.1}{\includegraphics{examplesignature.jpg}}
+    % \fullname
+    }
+}
+
+% Table of Contents
+%   The table of contents will be generated for you
+
+% Summary
+%   Write your summary here
+\newcommand{\summary}{
+  \tocsection{Summary}
+  {
+
+  \lipsum[10-11] % remove this line
+
+  % Write your summary here
+
+  }
+  \newpage
+}
+
+% Introduction
+%   Write an introduction here
+\newcommand{\introduction}{
+  \fancyhf{}
+  \pagestyle{fancy}
+  \renewcommand{\headrulewidth}{0pt}
+  \rfoot{\thepage}
+  \pagenumbering{arabic}
+  \mySection{Introduction}
+  {
+
+  \lipsum[8-9] % remove this line
+
+  % Write your introduction here
+
+  }
+  \newpage
+}
+
+% Analysis (body)
+%   Write the body of your report here
+%   Section Headers:
+%     \mySection{ title }{ ... } will create a new section block
+%     \mySubSection{ title }{ ... } will create a new subsection block
+%     \mySubSubSection{ title }{ ... } will create a new subsubsection block
+%   Bullet Points:
+%     \bulletpoints{
+%        \item bullet point 1
+%        \item bullet point 2 (and so on)
+%     }
+%   For Figures:
+%     \myFigure{ scaling factor }{ image.jpg }{ caption } adds a figure
+%   For Tables:
+%     \myTable{ scaling factor }{ table.jpg }{ caption }
+%     (if your table is an image) or you need to learn normal LaTeX syntax
+%     Read this for help: http://en.wikibooks.org/wiki/LaTeX/Tables
+\newcommand{\analysis}{
+
+  % Write your body here
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%% This is an example, remove this entire block %%%%%%%%%
+  \mySection{Analysis}{
+    \lipsum[2]
+    \mySubSection{My Amazing SubSection} {
+      \lipsum[12]
+      \bulletpoints{
+      \item first item
+      \item second item
+      }
+      \mySubSubSection{My Amazing SubSubSection} {
+        \lipsum[10]
+        \myFigure{0.10}{examplefigure.jpg}{Hello, World}
+        \lipsum[11-12]
+        \myTable{0.3}{exampletable.png}{Hello, Table}
+      }
+    }
+  }
+
+  \newpage % This creates a new page, your may or may not want this, remove at your own discretion
+}
+
+% Conclusions
+%   Write your Conclusions
+\newcommand{\conclusions}{
+  \section{Conclusions}
+  {
+
+  \lipsum[33-35] % remove this line
+
+  % Write your conclusions here
+
+  }
+}
+
+% Recommendations
+%   Write your Recommendations here
+\newcommand{\recommendations}{
+  \section{Recommendations}
+  {
+
+  \lipsum[37-39] % remove this line
+
+  % Write your recommendations here
+
+  }
+}
+
+% References
+%   Add your own References
+\newcommand{\references}{
+  \makereferences{
+      % Add each reference like this, with some label for each item
+      \bibitem{labelName}
+      Champion, R., Paci, T. \& Vardon, J. (2012). PD 2: Critical Reflection and Report Writing. Retrieved 1 March, 2012 from https://learn.uwaterloo.ca/d2l/le/content/80224/viewContent/605550/View
+  }
+}
+
+% Appendices
+%   Add your appendices
+\newcommand{\myappendix}{
+  \addanappendix{Appendix A: Lorem Ipsum}{
+    \lipsum[50] % remove this line
+  }
+  \newpage
+}
+
+\begin{document}
+  \createtitlepage
+  \letterofsubmittal
+  \mytableofcontents
+  \summary
+  \introduction
+  \analysis
+  \conclusions
+  \recommendations
+  \references
+  \myappendix
+\end{document}
